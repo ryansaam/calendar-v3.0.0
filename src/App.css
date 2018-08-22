@@ -36,7 +36,7 @@
   width: 100%;
   top: 60px;
 }
-#right-arrow {
+#left-arrow {
   background: white;
   height: 100%;
   width: 94px;
@@ -48,7 +48,7 @@
   align-items: center;
   justify-items: center;
 }
-#left-arrow {
+#right-arrow {
   background: white;
   height: 100%;
   width: 94px;
