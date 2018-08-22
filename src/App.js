@@ -6,9 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      leadDates: [],
-      monthDates: [],
-      postDates: [],
+      datesArray: [],
       date: new Date(),
       monthIsOffset: false,
       monthOffset: new Date().getMonth(),
@@ -53,13 +51,12 @@ class App extends Component {
     }
     let leadDayStart = monthArrays[month-1] - monthStart + 1
     // Loop out lead date numbers
-    let leadDatesArray = []
+    let datesArray = []
     for (let i = 0; i < monthStart; i++) {
-      leadDatesArray.push(leadDayStart)
+      datesArray.push({date: leadDayStart, id: "leadDate" + i})
       leadDayStart++
       filledNodes++
     }
-    this.setState({ leadDates: leadDatesArray })
     if (month + 1 === 13) { 
       month = 0;
       this.setState({ monthOffset: 0 });
@@ -67,19 +64,16 @@ class App extends Component {
       console.log("month",month)
     }
     // Loop out month's date numbers
-    let monthDatesArray = []
     for (let i = 0; i < monthArrays[month]; i++) {
-      monthDatesArray.push(i+1)
+      datesArray.push({date: i, id: "monthDate" + i})
       filledNodes++
     }
-    this.setState({ monthDates: monthDatesArray })
     // fill the empty remaining cells in the calendar
-    let postDatesArray = []
     let remainingNodes = 42 - filledNodes;
     for (let i = 0; i < remainingNodes; i++) {
-      postDatesArray.push(i+1)
+      datesArray.push({date: i, id: "postDate" + i})
     }
-    this.setState({ postDates: postDatesArray })
+    this.setState({ datesArray: datesArray })
   }
 
   componentWillMount() {
@@ -142,7 +136,7 @@ class App extends Component {
   }
 
   render() {
-    const { leadDates, monthDates, postDates, monthIsOffset } = this.state
+    const { datesArray, monthIsOffset } = this.state
     return (
       <div className="App">
         <div className="calendar">
@@ -180,7 +174,7 @@ class App extends Component {
             <div className="d-wkDays" id="wkDays">
 
             </div>
-            <DateNode leadDates={leadDates} monthDates={monthDates}  postDates={postDates} monthIsOffset={monthIsOffset}/>
+            <DateNode datesArray={datesArray} monthIsOffset={monthIsOffset}/>
           </div>
         </div>
       </div>
