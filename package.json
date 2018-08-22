@@ -1,6 +1,6 @@
 {
   "name": "calendar-v3",
-  "version": "3.0.0",
+  "version": "3.1.1",
   "private": true,
   "dependencies": {
     "react": "^16.4.2",
