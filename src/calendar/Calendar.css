@@ -17,15 +17,63 @@
   height: 50px;
   width: 88%;
   margin: auto;
+  font-weight: 700;
+  font-size: 35px;
   border-radius: 50px 50px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
+
 .c-header2 {
   background: white;
   height: 50px;
-  width: 40%;
+  width: 45%;
   margin: auto;
+  overflow: hidden;
   border-radius: 0px 0px 50px 50px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
+.container-3d {
+  position: relative;
+  width: 130px;
+  height: 30px;
+  perspective: 260px;
+  bottom: 5px;
+}
+.box-3d {
+  width: 130px;
+  transform-style: preserve-3d;
+  transition: transform 300ms linear;
+}
+.box-3d div {
+  background: white;
+  position: absolute;
+  font-size: 22px;
+  font-weight: 500;
+  width: 130px;
+  height: 30px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+#front {
+  transform: translateZ(65px);
+}
+#back {
+  transform: rotateY(180deg) translateZ(65px);
+}
+#left {
+  transform: rotateY(-90deg) translateX(-65px);
+  transform-origin: left;
+}
+#right {
+  transform: rotateY(90deg) translateX(65px);
+  transform-origin: right;
+}
+
 .arrow-btns {
   position: absolute;
   height: 68px;
