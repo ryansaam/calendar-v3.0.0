@@ -1,4 +1,4 @@
-export let fillCalendar = (month, year) => {
+export const fillCalendar = (month, year) => {
   if (typeof month !== "number" || typeof year !== "number") { throw new Error("fillCalendar only accepts parameters of Type Number") }
   if (month < 0 || month > 11) { throw new Error("Invalid month index: Try [0-11]") }
   let datesArray = []
@@ -32,4 +32,17 @@ export let fillCalendar = (month, year) => {
     datesArray.push({date: i + 1, type: "postDate", id: "postDate" + i})
   }
   return datesArray
+}
+
+export const route = (number, boolean) => {
+  if (boolean) {
+    switch (number) {
+      case 1: return 4
+      case 2: return 3
+      case 3: return 2
+      case 4: return 1
+      default: return number + 1
+    }
+  }
+  return number + 1
 }
