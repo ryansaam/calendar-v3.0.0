@@ -11,7 +11,7 @@ function DateNodes(props) {
         </div>
       )
     }
-    if (date.date === cDate.getDate() && props.monthIsOffset !== true) {
+    if (date.date === cDate.getDate() && props.monthIsOffset !== true && date.type === "monthDate") {
       return (
         <div className="dateNode" key={date.id} style={{ background: "#c4c1c1" }}>
           <span>{date.date}</span>
