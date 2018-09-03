@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Calendar from './calendar/components/Calendar.js'
+import Calendar from './calendar/Calendar'
+import { redflat } from './calendar/calendar.colors'
 
 const App = () => {
   return (
     <div className="App">
       <Calendar 
         date={new Date()}
-        monthNames={["Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sept ", "Oct ", "Nov ", "Dec "]}
+        colors={redflat}
       />
     </div>
   )

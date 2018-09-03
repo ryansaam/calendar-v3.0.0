@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import '../Calendar.css'
-import { fillCalendar, route } from '../calendar.tools'
-import ArrowBtn from './ArrowBtn'
-import DateNodes from './DateNodes'
-import TextWindow from './TextWindow'
+import './Calendar.css'
+import './mediaqueries.css'
+import { fillCalendar, route } from './calendar.tools.js'
+import ArrowBtn from './components/ArrowBtn.js'
+import DateNodes from './components/DateNodes.js'
+import TextWindow from './components/TextWindow.js'
+import WeekDayNodes from './components/WeekDayNodes.js';
+
+const monthNames = ["Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sept ", "Oct ", "Nov ", "Dec "]
 
 class Calendar extends Component {
   constructor(props) {
@@ -17,23 +21,11 @@ class Calendar extends Component {
       itorator: 0,
       rightBtn: false,
       leftBtn: false,
-      monthGroup: [props.monthNames[props.date.getMonth()] + props.date.getFullYear(), undefined, undefined, undefined]
+      monthGroup: [monthNames[props.date.getMonth()] + props.date.getFullYear(), undefined, undefined, undefined]
     }
     this.handleMonthChange = this.handleMonthChange.bind(this)
   }
 
-  componentDidMount() {
-    // Loop out weekday names
-    const wkDayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-    const wkDaysContainer = document.getElementById('wkDays')
-    for (let i = 0; i < 7; i++) {
-      let wkDayNode = document.createElement("div");
-      wkDayNode.textContent = wkDayNames[i];
-      wkDayNode.setAttribute("id", "wkDayNode" + i);
-      wkDayNode.setAttribute("class", "wkDayNode");
-      wkDaysContainer.appendChild(wkDayNode);
-    }
-  }
   componentDidUpdate(prevProps, prevState) {
     const { yearOffset, monthOffset } = this.state
     if (this.state.monthOffset !== prevState.monthOffset) {
@@ -77,10 +69,10 @@ class Calendar extends Component {
         this.setState({ monthIsOffset: ( monthOffset === cMonth && yearOffset === cYear ) ? false : true })
         this.setState({rightBtn: true, leftBtn: false})
         this.setState(
-          (itorator === 1) ? prevState => ({ monthGroup: [prevState.monthGroup[0], this.props.monthNames[monthOffset] + yearOffset, undefined, undefined] }) :
-          (itorator === 2) ? prevState => ({ monthGroup: [undefined, prevState.monthGroup[1], this.props.monthNames[monthOffset] + yearOffset, undefined] }) :
-          (itorator === 3) ? prevState => ({ monthGroup: [undefined, undefined, prevState.monthGroup[2], this.props.monthNames[monthOffset] + yearOffset] }) :
-          (itorator === 4) ? prevState => ({ monthGroup: [this.props.monthNames[monthOffset] + yearOffset, undefined, undefined, prevState.monthGroup[3]], itorator: 0 }) : void 0
+          (itorator === 1) ? prevState => ({ monthGroup: [prevState.monthGroup[0], monthNames[monthOffset] + yearOffset, undefined, undefined] }) :
+          (itorator === 2) ? prevState => ({ monthGroup: [undefined, prevState.monthGroup[1], monthNames[monthOffset] + yearOffset, undefined] }) :
+          (itorator === 3) ? prevState => ({ monthGroup: [undefined, undefined, prevState.monthGroup[2], monthNames[monthOffset] + yearOffset] }) :
+          (itorator === 4) ? prevState => ({ monthGroup: [monthNames[monthOffset] + yearOffset, undefined, undefined, prevState.monthGroup[3]], itorator: 0 }) : void 0
         )
       })
     } else {
@@ -89,10 +81,10 @@ class Calendar extends Component {
         this.setState({ monthIsOffset: ( monthOffset === cMonth && yearOffset === cYear ) ? false : true })
         this.setState({rightBtn: false, leftBtn: true})
         this.setState(
-          (itorator === 1) ? prevState => ({ monthGroup: [prevState.monthGroup[0], undefined, undefined, this.props.monthNames[monthOffset] + yearOffset] }) :
-          (itorator === 2) ? prevState => ({ monthGroup: [undefined, undefined, this.props.monthNames[monthOffset] + yearOffset, prevState.monthGroup[3]] }) :
-          (itorator === 3) ? prevState => ({ monthGroup: [undefined, this.props.monthNames[monthOffset] + yearOffset, prevState.monthGroup[2], undefined] }) :
-          (itorator === 4) ? prevState => ({ monthGroup: [this.props.monthNames[monthOffset] + yearOffset, prevState.monthGroup[1], undefined, undefined], itorator: 0 }) : void 0
+          (itorator === 1) ? prevState => ({ monthGroup: [prevState.monthGroup[0], undefined, undefined, monthNames[monthOffset] + yearOffset] }) :
+          (itorator === 2) ? prevState => ({ monthGroup: [undefined, undefined, monthNames[monthOffset] + yearOffset, prevState.monthGroup[3]] }) :
+          (itorator === 3) ? prevState => ({ monthGroup: [undefined, monthNames[monthOffset] + yearOffset, prevState.monthGroup[2], undefined] }) :
+          (itorator === 4) ? prevState => ({ monthGroup: [monthNames[monthOffset] + yearOffset, prevState.monthGroup[1], undefined, undefined], itorator: 0 }) : void 0
         )
       })
     }
@@ -100,9 +92,9 @@ class Calendar extends Component {
 
   render() {
     const { datesArray, monthIsOffset, rotateY, monthGroup, monthOffset } = this.state
-    const { date, monthNames } = this.props
+    const { date, monthNames, colors } = this.props
     return (
-      <div className="calendar">
+      <div className="calendar" style={{background: colors.componentBG, color: colors.textColor}}>
         <div className="ui">
           <TextWindow
             monthGroup={monthGroup}
@@ -110,17 +102,28 @@ class Calendar extends Component {
             monthOffset={monthOffset} 
             cMonth={date.getMonth()}
             monthNames={monthNames}
+            header1BG={colors.header1BG}
+            header2BG={colors.header2BG}
            />
           <div className="arrow-btns">
-            <ArrowBtn id={"left-arrow"} eventHandler={this.handleMonthChange} />
-            <ArrowBtn id={"right-arrow"} eventHandler={this.handleMonthChange} />
+            <ArrowBtn id={"left-arrow"} eventHandler={this.handleMonthChange} colors={{arrowsBG: colors.arrowsBG, svgFill: colors.textColor}} />
+            <ArrowBtn id={"right-arrow"} eventHandler={this.handleMonthChange} colors={{arrowsBG: colors.arrowsBG, svgFill: colors.textColor}} />
           </div>
         </div>
         <div className="display">
-          <div className="d-wkDays" id="wkDays">
-
+          <div className="d-wkDays" id="wkDays" style={{background: colors.weekDayNamesBG}}>
+            <WeekDayNodes border={colors.componentBG} />
           </div>
-          <DateNodes datesArray={datesArray} monthIsOffset={monthIsOffset} />
+          <DateNodes
+            datesArray={datesArray} 
+            monthIsOffset={monthIsOffset} 
+            colors={{
+              prevMonthNodesBG: colors.prevMonthNodesBG,
+              currentDateNodeBG: colors.currentDateNodeBG,
+              currentMonthNodesBG: colors.currentMonthNodesBG,
+              nextMonthNodesBG: colors.nextMonthNodesBG
+            }}
+          />
         </div>
       </div>
     );
