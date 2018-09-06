@@ -1,8 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import Calendar from './Calendar.js'
+import colorTheme from './calendar.colors.js'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+export { Calendar as default, colorTheme }

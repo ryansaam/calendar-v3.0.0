@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import './Calendar.css'
-import './mediaqueries.css'
-import { fillCalendar, route } from './calendar.tools.js'
-import ArrowBtn from './components/ArrowBtn.js'
-import DateNodes from './components/DateNodes.js'
-import TextWindow from './components/TextWindow.js'
-import WeekDayNodes from './components/WeekDayNodes.js';
+import { fillCalendar, route } from './calendar.tools'
+import ArrowBtn from './components/ArrowBtn'
+import DateNodes from './components/DateNodes'
+import TextWindow from './components/TextWindow'
+import WeekDayNodes from './components/WeekDayNodes';
 
 const monthNames = ["Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sept ", "Oct ", "Nov ", "Dec "]
 

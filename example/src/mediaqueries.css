@@ -1,0 +1,213 @@
+@media (max-width: 406px) {
+  .ui {
+    padding-bottom: 30px;
+  }
+  .display {
+    height: 340px;
+  }
+  .arrow-btns {
+    height: 62px;
+    top: 58px;
+  }
+  #left-arrow {
+    width: 78px;
+  }
+  #right-arrow {
+    width: 78px;
+  }
+}
+
+@media (max-width: 390px) {
+  .c-header {
+    width: 82%;
+    font-weight: 650;
+    font-size: 32px;
+  }
+  .c-header2 {
+    width: 42%;
+    border-radius: 0px 0px 45px 45px;
+  }
+  .container-3d {
+    width: 114px;
+    height: 30px;
+    perspective: 228px;
+  }
+  .box-3d {
+    width: 114px;
+  }
+  .box-3d div {
+    font-size: 20px;
+    font-weight: 450;
+    width: 114px;
+    height: 30px;
+  }
+  #front {
+    transform: translateZ(57px);
+  }
+  #back {
+    transform: rotateY(180deg) translateZ(57px);
+  }
+  #left {
+    transform: rotateY(-90deg) translateX(-57px);
+  }
+  #right {
+    transform: rotateY(90deg) translateX(57px);
+  }
+  .wkDayNode {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 340px) {
+  .c-header {
+    width: 90%;
+    font-size: 26px;
+    height: 40px;
+  }
+  .c-header2 {
+    width: 40%;
+    height: 40px;
+  }
+  .container-3d {
+    width: 96px;
+    height: 30px;
+    perspective: 192px;
+  }
+  .box-3d {
+    width: 96px;
+  }
+  .box-3d div {
+    font-size: 16px;
+    font-weight: 450;
+    width: 96px;
+    height: 30px;
+  }
+  #front {
+    transform: translateZ(48px);
+  }
+  #back {
+    transform: rotateY(180deg) translateZ(48px);
+  }
+  #left {
+    transform: rotateY(-90deg) translateX(-48px);
+  }
+  #right {
+    transform: rotateY(90deg) translateX(48px);
+  }
+  .d-wkDays div {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  .arrow-btns {
+    height: 58px;
+    top: 46px;
+  }
+  #arrowBtn {
+    width: 50px;
+    height: 50px;
+  }
+  #left-arrow {
+    width: 74px;
+    left: 15px;
+  }
+  #right-arrow {
+    width: 74px;
+    right: 15px;
+  }
+  .display {
+    height: 310px;
+  }
+}
+
+@media (min-width: 520px) {
+  .calendar {
+    width: 280px;
+    padding-bottom: 14px;
+  }
+  .ui {
+    padding-bottom: 30px;
+  }
+  .c-header {
+    height: 34px;
+    font-size: 23px;
+  }
+  .c-header2 {
+    width: 40%;
+    height: 30px;
+  }
+  .container-3d {
+    width: 80px;
+    height: 26px;
+    perspective: 160px;
+  }
+  .box-3d {
+    width: 80px;
+  }
+  .box-3d div {
+    font-size: 12px;
+    width: 80px;
+    height: 26px;
+  }
+  #front {
+    transform: translateZ(40px);
+  }
+  #back {
+    transform: rotateY(180deg) translateZ(40px);
+  }
+  #left {
+    transform: rotateY(-90deg) translateX(-40px);
+  }
+  #right {
+    transform: rotateY(90deg) translateX(40px);
+  }
+  .arrow-btns {
+    height: 48px;
+    top: 40px;
+  }
+  #arrowBtn {
+    width: 46px;
+    height: 46px;
+  }
+  #left-arrow {
+    width: 64px;
+    left: 15px;
+  }
+  #right-arrow {
+    width: 64px;
+    right: 15px;
+  }
+  .display {
+    height: 270px;
+  }
+  .d-wkDays {
+    height: 48px;
+    border-radius: 40px 40px 0px 0px;
+  }
+  .d-wkDays div {
+    font-size: 1.0em;
+    font-weight: 550;
+  }
+  .dateNode {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .calendar {
+    width: 700px;
+  }
+  .display {
+    height: 670px;
+  }
+  .dateNode {
+    font-size: 38px;
+  }
+  .d-wkDays {
+    height: 70px;
+  }
+  .wkDayNode {
+    font-weight: bold;
+    font-size: 2em;
+  }
+}
